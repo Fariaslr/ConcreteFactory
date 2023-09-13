@@ -63,5 +63,6 @@ public class Medidas {
 		this.brita = pesoHalter * 420;
 		this.agua = pesoHalter * 50;
 		this.cola = pesoHalter * 13;
-	}
+	}      
+        
 }

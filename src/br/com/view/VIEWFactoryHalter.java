@@ -1,12 +1,12 @@
 package br.com.view;
 
 import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import Atxy2k.CustomTextField.RestrictedTextField;
+import br.com.data.Doses;
 import br.com.data.Medidas;
 
 import java.awt.Toolkit;
@@ -22,6 +22,8 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
 
 public class VIEWFactoryHalter extends JFrame {
 	private JPanel contentPane;
@@ -34,6 +36,7 @@ public class VIEWFactoryHalter extends JFrame {
 	private JTextField txtBrita;
 	private JLabel lblCola;
 	private JTextField txtCola;
+	private JLabel lblDosagem;
 
 	/**
 	 * Launch the application.
@@ -55,6 +58,7 @@ public class VIEWFactoryHalter extends JFrame {
 	 * Create the frame.
 	 */
 	public VIEWFactoryHalter() {
+		setAlwaysOnTop(true);
 		setResizable(false);
 		setIconImage(Toolkit.getDefaultToolkit()
 				.getImage(VIEWFactoryHalter.class.getResource("/br/com/icon/icon aplication.png")));
@@ -63,14 +67,16 @@ public class VIEWFactoryHalter extends JFrame {
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		this.setLocationRelativeTo(null);
-		Medidas med = new Medidas();
+
+		Medidas medida = new Medidas();
+		Doses dose = new Doses();
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		getContentPane().setLayout(null);
 
 		txtPesoHalter = new JTextField();
-		txtPesoHalter.setBounds(156, 27, 183, 20);
+		txtPesoHalter.setBounds(101, 27, 29, 20);
 		txtPesoHalter.setBackground(Color.WHITE);
 		txtPesoHalter.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, Color.GRAY));
 		contentPane.add(txtPesoHalter);
@@ -82,40 +88,48 @@ public class VIEWFactoryHalter extends JFrame {
 				if (txtPesoHalter.getText().equals("")) {
 					JOptionPane.showMessageDialog(null, "Informe o peso do halter");
 				} else {
-					med.setPesoHalter(Integer.parseInt(txtPesoHalter.getText()));
-					med.calculaMedidas();
+
+					medida.setPesoHalter(Integer.parseInt(txtPesoHalter.getText()));
+
+					medida.calculaMedidas();
+					dose.calculaDosagem(medida);
+
 					mostraValores();
+
+					System.out.println(dose.toString());
 				}
 			}
 
 			public void mostraValores() {
-				txtCimento.setText(Integer.toString(med.getCimento()));
-				txtAreia.setText(Integer.toString(med.getAreia()));
-				txtAgua.setText(Integer.toString(med.getAgua()));
-				txtBrita.setText(Integer.toString(med.getBrita()));
-				txtCola.setText(Integer.toString(med.getCola()));
+
+				String ml = " ml";
+				txtCimento.setText(Integer.toString(medida.getCimento()).concat(ml));
+				txtAreia.setText(Integer.toString(medida.getAreia()).concat(ml));
+				txtAgua.setText(Integer.toString(medida.getAgua()).concat(ml));
+				txtBrita.setText(Integer.toString(medida.getBrita()).concat(ml));
+				txtCola.setText(Integer.toString(medida.getCola()).concat(ml));
 			}
 		});
 
-		btnConsulta.setBounds(243, 194, 100, 20);
+		btnConsulta.setBounds(240, 195, 100, 20);
 		contentPane.add(btnConsulta);
 
-		JLabel lblNewLabel = new JLabel("Halter (em Kg)");
-		lblNewLabel.setBounds(26, 28, 137, 14);
+		JLabel lblNewLabel = new JLabel("Halter");
+		lblNewLabel.setBounds(52, 29, 57, 14);
 		lblNewLabel.setFont(new Font("Verdana", Font.BOLD, 12));
 		lblNewLabel.setForeground(new Color(0, 0, 0));
 		lblNewLabel.setBackground(new Color(240, 240, 240));
 		contentPane.add(lblNewLabel);
 
 		txtCimento = new JTextField();
-		txtCimento.setBounds(90, 82, 40, 20);
+		txtCimento.setBounds(90, 82, 54, 20);
 		txtCimento.setEditable(false);
 		contentPane.add(txtCimento);
 		txtCimento.setColumns(10);
 		txtCimento.setBorder(null);
 
 		txtAreia = new JTextField();
-		txtAreia.setBounds(199, 83, 40, 20);
+		txtAreia.setBounds(199, 83, 54, 20);
 		contentPane.add(txtAreia);
 		txtAreia.setColumns(10);
 		txtAreia.setEditable(false);
@@ -128,7 +142,7 @@ public class VIEWFactoryHalter extends JFrame {
 
 		JLabel lblAreia = new JLabel();
 		lblAreia.setIcon(new ImageIcon(VIEWFactoryHalter.class.getResource("/br/com/icon/icon areia.png")));
-		lblAreia.setBounds(154, 72, 32, 32);
+		lblAreia.setBounds(160, 72, 32, 32);
 		contentPane.add(lblAreia);
 
 		lblAgua = new JLabel();
@@ -137,7 +151,7 @@ public class VIEWFactoryHalter extends JFrame {
 		contentPane.add(lblAgua);
 
 		txtAgua = new JTextField();
-		txtAgua.setBounds(301, 82, 40, 20);
+		txtAgua.setBounds(301, 82, 57, 20);
 		contentPane.add(txtAgua);
 		txtAgua.setColumns(10);
 		txtAgua.setEditable(false);
@@ -149,7 +163,7 @@ public class VIEWFactoryHalter extends JFrame {
 		contentPane.add(lblBrita);
 
 		txtBrita = new JTextField();
-		txtBrita.setBounds(130, 135, 40, 20);
+		txtBrita.setBounds(130, 135, 57, 20);
 		contentPane.add(txtBrita);
 		txtBrita.setColumns(10);
 		txtBrita.setEditable(false);
@@ -157,17 +171,43 @@ public class VIEWFactoryHalter extends JFrame {
 
 		lblCola = new JLabel();
 		lblCola.setIcon(new ImageIcon(VIEWFactoryHalter.class.getResource("/br/com/icon/icon glue.png")));
-		lblCola.setBounds(217, 125, 32, 32);
+		lblCola.setBounds(222, 125, 32, 32);
 		contentPane.add(lblCola);
 
 		txtCola = new JTextField();
-		txtCola.setBounds(268, 135, 40, 20);
+		txtCola.setBounds(268, 135, 46, 20);
 		contentPane.add(txtCola);
 		txtCola.setColumns(10);
 		txtCola.setEditable(false);
 		txtCola.setBorder(null);
 
 		RestrictedTextField validar = new RestrictedTextField(txtPesoHalter);
+
+		JComboBox CboDosagem = new JComboBox();
+		CboDosagem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+
+					dose.setDoseRecipiente(Float.parseFloat(CboDosagem.getSelectedItem().toString().replace("ml", "")));
+
+				} catch (Exception e2) {
+					System.out.println(e);
+				}
+			}
+
+		});
+		CboDosagem.setBounds(268, 24, 75, 22);
+		contentPane.add(CboDosagem);
+
+		JLabel lblKg = new JLabel("Kg");
+		lblKg.setFont(new Font("Verdana", Font.BOLD, 11));
+		lblKg.setBounds(141, 28, 20, 14);
+		contentPane.add(lblKg);
+
+		lblDosagem = new JLabel("Dose (ml)");
+		lblDosagem.setFont(new Font("Verdana", Font.BOLD, 11));
+		lblDosagem.setBounds(195, 28, 64, 14);
+		contentPane.add(lblDosagem);
 		validar.setOnlyNums(true);
 		validar.setLimit(2);
 
