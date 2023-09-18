@@ -1,4 +1,4 @@
-package br.com.view;
+	package br.com.view;
 
 import java.awt.EventQueue;
 import javax.swing.JFrame;
@@ -184,6 +184,7 @@ public class VIEWFactoryHalter extends JFrame {
 		RestrictedTextField validar = new RestrictedTextField(txtPesoHalter);
 
 		JComboBox CboDosagem = new JComboBox();
+		CboDosagem.setModel(new DefaultComboBoxModel(new String[] {"", "200 ml", "300 ml", "500 ml", "750 ml", "1000 ml"}));
 		CboDosagem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
