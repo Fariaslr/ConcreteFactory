@@ -8,9 +8,8 @@ public class Dosagem {
 	private float brita;
 	private float agua;
 	private float cola;
-	
+
 	public Dosagem() {
-		this.doseRecipiente = 200;
 	}
 
 	public float getDoseRecipiente() {
@@ -61,7 +60,7 @@ public class Dosagem {
 		this.cola = cola;
 	}
 
-	public void calculaDosagem(Medidas m) {
+	public void calculaDosagem(Medida m) {
 		this.cimento = (float) m.getCimento() / doseRecipiente;
 		this.areia = (float) m.getAreia() / doseRecipiente;
 		this.brita = (float) m.getBrita() / doseRecipiente;

@@ -134,7 +134,8 @@ public class VIEWconcreteFactory {
 				}
 			}
 		});
-		cboDosagem.setModel(new DefaultComboBoxModel(new String[] { "", "200 ml", "300 ml", "500 ml", "750 ml", "1000 ml" }));
+		cboDosagem.setModel(
+				new DefaultComboBoxModel(new String[] { "", "200 ml", "300 ml", "500 ml", "750 ml", "1000 ml" }));
 		cboDosagem.setBounds(110, 57, 88, 22);
 		panelHalterPeso.add(cboDosagem);
 		frmFbricaDeConcreto.setLocationRelativeTo(null);
@@ -319,6 +320,8 @@ public class VIEWconcreteFactory {
 				try {
 					if (txtPesoHalter.getText().equals("")) {
 						JOptionPane.showMessageDialog(frmFbricaDeConcreto, "Informe o peso do halter");
+					} else if (cboDosagem.getSelectedIndex() == 0) {
+						JOptionPane.showMessageDialog(frmFbricaDeConcreto, "Informe a dosagem");
 					} else {
 						medida.setPesoHalter(Integer.parseInt(txtPesoHalter.getText()));
 						medida.calculaMedidas();
