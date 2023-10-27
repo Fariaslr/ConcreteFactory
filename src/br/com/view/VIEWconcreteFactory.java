@@ -5,6 +5,7 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 
+import com.formdev.flatlaf.FlatDarculaLaf;
 import Atxy2k.CustomTextField.RestrictedTextField;
 import br.com.aplication.BordaCantoArredondado;
 import br.com.model.*;
@@ -14,6 +15,8 @@ import java.awt.Toolkit;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class VIEWconcreteFactory {
 
@@ -40,6 +43,7 @@ public class VIEWconcreteFactory {
 				try {
 					VIEWconcreteFactory window = new VIEWconcreteFactory();
 					window.frmFbricaDeConcreto.setVisible(true);
+					UIManager.setLookAndFeel(new FlatDarculaLaf());
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -62,9 +66,9 @@ public class VIEWconcreteFactory {
 		String ml = " ml";
 		txtCimentoML.setText(Float.toString(medida.getCimento()).format("%.0f", medida.getCimento()).concat(ml));
 		txtAreiaML.setText(Float.toString(medida.getAreia()).format("%.0f", medida.getAreia()).concat(ml));
-		txtAguaML.setText(Float.toString(medida.getAgua()).format("%.1f", dose.getAgua()).concat(ml));
-		txtBritaML.setText(Float.toString(medida.getBrita()).format("%.0f", dose.getBrita()).concat(ml));
-		txtColaML.setText(Float.toString(medida.getCola()).format("%.2f", dose.getCola()).concat(ml));
+		txtAguaML.setText(Float.toString(medida.getAgua()).format("%.1f", medida.getAgua()).concat(ml));
+		txtBritaML.setText(Float.toString(medida.getBrita()).format("%.0f", medida.getBrita()).concat(ml));
+		txtColaML.setText(Float.toString(medida.getCola()).format("%.2f", medida.getCola()).concat(ml));
 
 		String doses = " doses";
 		txtCimentoDosagem.setText(Float.toString(dose.getCimento()).format("%.0f", dose.getCimento()).concat(doses));
@@ -72,6 +76,21 @@ public class VIEWconcreteFactory {
 		txtAguaDosagem.setText(Float.toString(dose.getAgua()).format("%.1f", dose.getAgua()).concat(doses));
 		txtBritaDosagem.setText(Float.toString(dose.getBrita()).format("%.0f", dose.getBrita()).concat(doses));
 		txtColaDosagem.setText(Float.toString(dose.getCola()).format("%.2f", dose.getCola()).concat(doses));
+	}
+
+	public void limpaJtextFields() {
+
+		txtCimentoML.setText(null);
+		txtAreiaML.setText(null);
+		txtAguaML.setText(null);
+		txtBritaML.setText(null);
+		txtColaML.setText(null);
+
+		txtCimentoDosagem.setText(null);
+		txtAreiaDosagem.setText(null);
+		txtAguaDosagem.setText(null);
+		txtBritaDosagem.setText(null);
+		txtColaDosagem.setText(null);
 	}
 
 	/**
@@ -96,6 +115,14 @@ public class VIEWconcreteFactory {
 		frmFbricaDeConcreto.getContentPane().add(lblPesoHalter);
 
 		txtPesoHalter = new JTextField();
+		txtPesoHalter.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+				if (txtPesoHalter.getText().equals("")) {
+					limpaJtextFields();
+				}
+			}
+		});
 		txtPesoHalter.setHorizontalAlignment(txtPesoHalter.CENTER);
 		txtPesoHalter.setBounds(136, 35, 20, 25);
 		frmFbricaDeConcreto.getContentPane().add(txtPesoHalter);
@@ -135,7 +162,7 @@ public class VIEWconcreteFactory {
 			}
 		});
 		cboDosagem.setModel(
-				new DefaultComboBoxModel(new String[] {"", "200 ml", "300 ml", "500 ml", "750 ml", "1000 ml"}));
+				new DefaultComboBoxModel(new String[] { "", "200 ml", "300 ml", "500 ml", "750 ml", "1000 ml" }));
 		cboDosagem.setBounds(110, 57, 88, 22);
 		panelHalterPeso.add(cboDosagem);
 		frmFbricaDeConcreto.setLocationRelativeTo(null);
@@ -276,30 +303,30 @@ public class VIEWconcreteFactory {
 		panelBrita_1.add(txtColaDosagem);
 		txtColaDosagem.setBorder(null);
 
-		JPanel panelAreia_1 = new JPanel();
-		panelAreia_1.setLayout(null);
-		panelAreia_1.setBorder(new BordaCantoArredondado());
-		panelAreia_1.setBounds(40, 341, 210, 55);
-		frmFbricaDeConcreto.getContentPane().add(panelAreia_1);
+		JPanel panelAgua = new JPanel();
+		panelAgua.setLayout(null);
+		panelAgua.setBorder(new BordaCantoArredondado());
+		panelAgua.setBounds(40, 341, 210, 55);
+		frmFbricaDeConcreto.getContentPane().add(panelAgua);
 
 		JLabel lblAguaIcon = new JLabel("");
 		lblAguaIcon.setIcon(new ImageIcon(VIEWconcreteFactory.class.getResource("/br/com/icon/icon água.png")));
 		lblAguaIcon.setBounds(15, 3, 30, 35);
-		panelAreia_1.add(lblAguaIcon);
+		panelAgua.add(lblAguaIcon);
 
 		JLabel lbliconAreia_2 = new JLabel("Água");
 		lbliconAreia_2.setHorizontalAlignment(SwingConstants.CENTER);
 		lbliconAreia_2.setForeground(Color.DARK_GRAY);
 		lbliconAreia_2.setFont(new Font("Tahoma", Font.BOLD, 9));
 		lbliconAreia_2.setBounds(5, 35, 55, 15);
-		panelAreia_1.add(lbliconAreia_2);
+		panelAgua.add(lbliconAreia_2);
 
 		txtAguaML = new JTextField();
 		txtAguaML.setHorizontalAlignment(SwingConstants.CENTER);
 		txtAguaML.setEditable(false);
 		txtAguaML.setColumns(10);
 		txtAguaML.setBounds(112, 10, 86, 20);
-		panelAreia_1.add(txtAguaML);
+		panelAgua.add(txtAguaML);
 		txtAguaML.setBorder(null);
 
 		txtAguaDosagem = new JTextField();
@@ -307,7 +334,7 @@ public class VIEWconcreteFactory {
 		txtAguaDosagem.setEditable(false);
 		txtAguaDosagem.setColumns(10);
 		txtAguaDosagem.setBounds(112, 29, 86, 20);
-		panelAreia_1.add(txtAguaDosagem);
+		panelAgua.add(txtAguaDosagem);
 		txtAguaDosagem.setBorder(null);
 
 		RestrictedTextField validar = new RestrictedTextField(txtPesoHalter);
