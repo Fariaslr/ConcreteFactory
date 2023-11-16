@@ -1,371 +1,541 @@
 package br.com.view;
 
-import java.awt.Color;
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-
-import com.formdev.flatlaf.FlatDarculaLaf;
 import Atxy2k.CustomTextField.RestrictedTextField;
 import br.com.aplication.BordaCantoArredondado;
-import br.com.model.*;
-
-import javax.swing.*;
+import br.com.model.Dosagem;
+import br.com.model.Medida;
+import java.awt.Color;
 import java.awt.Toolkit;
-import java.awt.Font;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
+import javax.swing.BorderFactory;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 
-public class VIEWconcreteFactory {
+/**
+ *
+ * @author Lucas
+ */
+public class VIEWconcreteFactory extends javax.swing.JFrame {
 
-	private JFrame frmFbricaDeConcreto;
-	private JTextField txtPesoHalter;
-	private JLabel lblkg;
-	private JTextField txtCimentoML;
-	private JTextField txtAreiaML;
-	private JTextField txtCimentoDosagem;
-	private JTextField txtAreiaDosagem;
-	private JTextField txtBritaML;
-	private JTextField txtBritaDosagem;
-	private JTextField txtColaML;
-	private JTextField txtColaDosagem;
-	private JTextField txtAguaML;
-	private JTextField txtAguaDosagem;
+    Medida medida = new Medida();
+    Dosagem dose = new Dosagem();
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					VIEWconcreteFactory window = new VIEWconcreteFactory();
-					window.frmFbricaDeConcreto.setVisible(true);
-					UIManager.setLookAndFeel(new FlatDarculaLaf());
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+    public VIEWconcreteFactory() {
+        initComponents();
+        initFrame();
+        initPanel();
+        initTextFieldMedidas();
+        initTextFieldDosagens();
+    }
 
-	/**
-	 * Create the application.
-	 */
-	public VIEWconcreteFactory() {
-		initialize();
-	}
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
 
-	Medida medida = new Medida();
-	Dosagem dose = new Dosagem();
+        jCheckBox1 = new javax.swing.JCheckBox();
+        panelHalterPeso = new javax.swing.JPanel();
+        labelPesoHalter = new javax.swing.JLabel();
+        txtPesoHalter = new javax.swing.JTextField();
+        lblKg = new javax.swing.JLabel();
+        lblDosagem = new javax.swing.JLabel();
+        cboDosagem = new javax.swing.JComboBox<>();
+        panelBrita = new javax.swing.JPanel();
+        lblIconBrita = new javax.swing.JLabel();
+        lblBrita = new javax.swing.JLabel();
+        txtMedidaBrita = new javax.swing.JTextField();
+        txtDosagemBrita = new javax.swing.JTextField();
+        panelCimento = new javax.swing.JPanel();
+        lblIconCimento = new javax.swing.JLabel();
+        lblCimento = new javax.swing.JLabel();
+        txtMedidaCimento = new javax.swing.JTextField();
+        txtDosagemCimento = new javax.swing.JTextField();
+        panelAreia = new javax.swing.JPanel();
+        lblIconAreia = new javax.swing.JLabel();
+        lblAreia = new javax.swing.JLabel();
+        txtMedidaAreia = new javax.swing.JTextField();
+        txtDosagemAreia = new javax.swing.JTextField();
+        panelAgua = new javax.swing.JPanel();
+        lblIconAgua = new javax.swing.JLabel();
+        lblAgua = new javax.swing.JLabel();
+        txtMedidaAgua = new javax.swing.JTextField();
+        txtDosagemAgua = new javax.swing.JTextField();
+        panelCola = new javax.swing.JPanel();
+        lblIconAgua1 = new javax.swing.JLabel();
+        lblCola = new javax.swing.JLabel();
+        txtMedidaCola = new javax.swing.JTextField();
+        txtDosagemCola = new javax.swing.JTextField();
+        btnCalcular = new javax.swing.JButton();
+        sliderDosagem = new javax.swing.JSlider();
+        lblLitro = new javax.swing.JLabel();
+        lblMl = new javax.swing.JLabel();
 
-	public void mostraValores() {
+        jCheckBox1.setText("jCheckBox1");
 
-		String ml = " ml";
-		txtCimentoML.setText(Float.toString(medida.getCimento()).format("%.0f", medida.getCimento()).concat(ml));
-		txtAreiaML.setText(Float.toString(medida.getAreia()).format("%.0f", medida.getAreia()).concat(ml));
-		txtAguaML.setText(Float.toString(medida.getAgua()).format("%.1f", medida.getAgua()).concat(ml));
-		txtBritaML.setText(Float.toString(medida.getBrita()).format("%.0f", medida.getBrita()).concat(ml));
-		txtColaML.setText(Float.toString(medida.getCola()).format("%.2f", medida.getCola()).concat(ml));
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Fábrica de concreto");
+        setResizable(false);
 
-		String doses = " doses";
-		txtCimentoDosagem.setText(Float.toString(dose.getCimento()).format("%.0f", dose.getCimento()).concat(doses));
-		txtAreiaDosagem.setText(Float.toString(dose.getAreia()).format("%.0f", dose.getAreia()).concat(doses));
-		txtAguaDosagem.setText(Float.toString(dose.getAgua()).format("%.1f", dose.getAgua()).concat(doses));
-		txtBritaDosagem.setText(Float.toString(dose.getBrita()).format("%.0f", dose.getBrita()).concat(doses));
-		txtColaDosagem.setText(Float.toString(dose.getCola()).format("%.2f", dose.getCola()).concat(doses));
-	}
+        panelHalterPeso.setBackground(new java.awt.Color(192, 192, 192));
 
-	public void limpaJtextFields() {
+        labelPesoHalter.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        labelPesoHalter.setForeground(new java.awt.Color(255, 255, 255));
+        labelPesoHalter.setText("Halter");
 
-		txtCimentoML.setText(null);
-		txtAreiaML.setText(null);
-		txtAguaML.setText(null);
-		txtBritaML.setText(null);
-		txtColaML.setText(null);
+        txtPesoHalter.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
-		txtCimentoDosagem.setText(null);
-		txtAreiaDosagem.setText(null);
-		txtAguaDosagem.setText(null);
-		txtBritaDosagem.setText(null);
-		txtColaDosagem.setText(null);
-	}
+        lblKg.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        lblKg.setForeground(new java.awt.Color(255, 255, 255));
+        lblKg.setText("Kg");
 
-	/**
-	 * Initialize the contents of the frame.
-	 */
-	private void initialize() {
+        lblDosagem.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        lblDosagem.setForeground(new java.awt.Color(255, 255, 255));
+        lblDosagem.setText("Dosagem");
 
-		frmFbricaDeConcreto = new JFrame();
-		frmFbricaDeConcreto.setIconImage(Toolkit.getDefaultToolkit()
-				.getImage(VIEWconcreteFactory.class.getResource("/br/com/icon/icon aplication.png")));
-		frmFbricaDeConcreto.setResizable(false);
-		frmFbricaDeConcreto.setTitle("Fábrica de concreto");
-		frmFbricaDeConcreto.setAlwaysOnTop(true);
-		frmFbricaDeConcreto.setBounds(-42, -177, 298, 584);
-		frmFbricaDeConcreto.getContentPane().setLayout(null);
+        cboDosagem.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "100 ml", "200 ml", "300 ml", "500 ml", "750 ml", "1000 ml", "1500 ml" }));
 
-		JLabel lblPesoHalter = new JLabel("Halter", SwingConstants.CENTER);
-		lblPesoHalter.setForeground(Color.WHITE);
-		lblPesoHalter.setFont(new Font("SansSerif", Font.BOLD, 14));
-		lblPesoHalter.setToolTipText("");
-		lblPesoHalter.setBounds(86, 39, 45, 15);
-		frmFbricaDeConcreto.getContentPane().add(lblPesoHalter);
+        javax.swing.GroupLayout panelHalterPesoLayout = new javax.swing.GroupLayout(panelHalterPeso);
+        panelHalterPeso.setLayout(panelHalterPesoLayout);
+        panelHalterPesoLayout.setHorizontalGroup(
+            panelHalterPesoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelHalterPesoLayout.createSequentialGroup()
+                .addGap(43, 43, 43)
+                .addGroup(panelHalterPesoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblDosagem)
+                    .addComponent(labelPesoHalter))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelHalterPesoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelHalterPesoLayout.createSequentialGroup()
+                        .addComponent(txtPesoHalter, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblKg))
+                    .addGroup(panelHalterPesoLayout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(cboDosagem, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(30, Short.MAX_VALUE))
+        );
+        panelHalterPesoLayout.setVerticalGroup(
+            panelHalterPesoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelHalterPesoLayout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addGroup(panelHalterPesoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelPesoHalter)
+                    .addComponent(txtPesoHalter, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblKg))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(panelHalterPesoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblDosagem)
+                    .addComponent(cboDosagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(18, Short.MAX_VALUE))
+        );
 
-		txtPesoHalter = new JTextField();
-		txtPesoHalter.addKeyListener(new KeyAdapter() {
-			@Override
-			public void keyReleased(KeyEvent e) {
-				if (txtPesoHalter.getText().equals("")) {
-					limpaJtextFields();
-				}
-			}
-		});
-		txtPesoHalter.setHorizontalAlignment(txtPesoHalter.CENTER);
-		txtPesoHalter.setBounds(136, 35, 20, 25);
-		frmFbricaDeConcreto.getContentPane().add(txtPesoHalter);
-		txtPesoHalter.setColumns(10);
-		txtPesoHalter.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, Color.GRAY));
-		txtPesoHalter.setBackground(new Color(192, 192, 192));
+        panelBrita.setBackground(new java.awt.Color(204, 204, 204));
+        panelBrita.setLayout(null);
 
-		lblkg = new JLabel("kg");
-		lblkg.setForeground(Color.WHITE);
-		lblkg.setFont(new Font("SansSerif", Font.BOLD, 14));
-		lblkg.setBounds(164, 33, 46, 23);
-		frmFbricaDeConcreto.getContentPane().add(lblkg);
+        lblIconBrita.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblIconBrita.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/image/Brita.png"))); // NOI18N
+        panelBrita.add(lblIconBrita);
+        lblIconBrita.setBounds(10, 10, 40, 32);
 
-		JPanel panelHalterPeso = new JPanel();
-		panelHalterPeso.setBackground(new Color(192, 192, 192));
-		panelHalterPeso.setBounds(30, 25, 230, 100);
-		panelHalterPeso.setBorder(new BordaCantoArredondado());
-		frmFbricaDeConcreto.getContentPane().add(panelHalterPeso);
-		panelHalterPeso.setLayout(null);
+        lblBrita.setFont(new java.awt.Font("Tahoma", 1, 9)); // NOI18N
+        lblBrita.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblBrita.setText("Brita");
+        lblBrita.setToolTipText("");
+        lblBrita.setMaximumSize(new java.awt.Dimension(32, 32));
+        lblBrita.setMinimumSize(new java.awt.Dimension(32, 32));
+        lblBrita.setPreferredSize(new java.awt.Dimension(32, 32));
+        panelBrita.add(lblBrita);
+        lblBrita.setBounds(10, 40, 40, 16);
 
-		JLabel lblDosagem = new JLabel("Dosagem");
-		lblDosagem.setForeground(new Color(255, 255, 255));
-		lblDosagem.setFont(new Font("SansSerif", Font.BOLD, 14));
-		lblDosagem.setBounds(25, 53, 68, 26);
-		panelHalterPeso.add(lblDosagem);
+        txtMedidaBrita.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtMedidaBrita.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        panelBrita.add(txtMedidaBrita);
+        txtMedidaBrita.setBounds(110, 10, 110, 21);
 
-		JComboBox cboDosagem = new JComboBox();
-		cboDosagem.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+        txtDosagemBrita.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        panelBrita.add(txtDosagemBrita);
+        txtDosagemBrita.setBounds(110, 30, 110, 22);
 
-				try {
-					dose.setDoseRecipiente(Float.parseFloat(cboDosagem.getSelectedItem().toString().replace("ml", "")));
-					dose.calculaDosagem(medida);
-				} catch (Exception e2) {
-					// TODO: handle exception
-				}
-			}
-		});
-		cboDosagem.setModel(
-				new DefaultComboBoxModel(new String[] { "", "200 ml", "300 ml", "500 ml", "750 ml", "1000 ml" }));
-		cboDosagem.setBounds(110, 57, 88, 22);
-		panelHalterPeso.add(cboDosagem);
-		frmFbricaDeConcreto.setLocationRelativeTo(null);
+        panelCimento.setBackground(new java.awt.Color(204, 204, 204));
+        panelCimento.setLayout(null);
 
-		JPanel panelCimento = new JPanel();
-		panelCimento.setBounds(40, 156, 210, 55);
-		frmFbricaDeConcreto.getContentPane().add(panelCimento);
-		panelCimento.setLayout(null);
-		panelCimento.setBorder(new BordaCantoArredondado());
+        lblIconCimento.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblIconCimento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/image/Cimento.png"))); // NOI18N
+        panelCimento.add(lblIconCimento);
+        lblIconCimento.setBounds(10, 10, 40, 32);
 
-		JLabel lblCimentoIcon = new JLabel("");
-		lblCimentoIcon.setIcon(new ImageIcon(VIEWconcreteFactory.class.getResource("/br/com/icon/icon cimento.png")));
-		lblCimentoIcon.setBounds(12, 5, 30, 35);
-		panelCimento.add(lblCimentoIcon);
+        lblCimento.setFont(new java.awt.Font("Tahoma", 1, 9)); // NOI18N
+        lblCimento.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblCimento.setText("Cimento");
+        lblCimento.setToolTipText("");
+        lblCimento.setMaximumSize(new java.awt.Dimension(32, 32));
+        lblCimento.setMinimumSize(new java.awt.Dimension(32, 32));
+        lblCimento.setPreferredSize(new java.awt.Dimension(32, 32));
+        panelCimento.add(lblCimento);
+        lblCimento.setBounds(5, 40, 50, 16);
 
-		JLabel lblCimento = new JLabel("Cimento");
-		lblCimento.setForeground(Color.DARK_GRAY);
-		lblCimento.setHorizontalAlignment(SwingConstants.CENTER);
-		lblCimento.setFont(new Font("Tahoma", Font.BOLD, 9));
-		lblCimento.setBounds(3, 36, 55, 15);
-		panelCimento.add(lblCimento);
+        txtMedidaCimento.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        panelCimento.add(txtMedidaCimento);
+        txtMedidaCimento.setBounds(110, 10, 110, 22);
 
-		txtCimentoML = new JTextField();
-		txtCimentoML.setHorizontalAlignment(SwingConstants.CENTER);
-		txtCimentoML.setEditable(false);
-		txtCimentoML.setBounds(112, 11, 85, 20);
-		panelCimento.add(txtCimentoML);
-		txtCimentoML.setColumns(10);
-		txtCimentoML.setBorder(null);
+        txtDosagemCimento.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        panelCimento.add(txtDosagemCimento);
+        txtDosagemCimento.setBounds(110, 30, 110, 22);
 
-		txtCimentoDosagem = new JTextField();
-		txtCimentoDosagem.setHorizontalAlignment(SwingConstants.CENTER);
-		txtCimentoDosagem.setEditable(false);
-		txtCimentoDosagem.setBounds(112, 30, 85, 20);
-		panelCimento.add(txtCimentoDosagem);
-		txtCimentoDosagem.setColumns(10);
-		txtCimentoDosagem.setBorder(null);
+        panelAreia.setBackground(new java.awt.Color(204, 204, 204));
+        panelAreia.setLayout(null);
 
-		JPanel panelAreia = new JPanel();
-		panelAreia.setBounds(40, 217, 210, 55);
-		frmFbricaDeConcreto.getContentPane().add(panelAreia);
-		panelAreia.setLayout(null);
-		panelAreia.setBorder(new BordaCantoArredondado());
+        lblIconAreia.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblIconAreia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/image/Areia.png"))); // NOI18N
+        panelAreia.add(lblIconAreia);
+        lblIconAreia.setBounds(10, 10, 40, 32);
 
-		JLabel lblAreiaIcon = new JLabel("");
-		lblAreiaIcon.setIcon(new ImageIcon(VIEWconcreteFactory.class.getResource("/br/com/icon/icon areia.png")));
-		lblAreiaIcon.setBounds(15, 3, 30, 35);
-		panelAreia.add(lblAreiaIcon);
+        lblAreia.setFont(new java.awt.Font("Tahoma", 1, 9)); // NOI18N
+        lblAreia.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblAreia.setText("Areia");
+        lblAreia.setToolTipText("");
+        lblAreia.setMaximumSize(new java.awt.Dimension(32, 32));
+        lblAreia.setMinimumSize(new java.awt.Dimension(32, 32));
+        lblAreia.setPreferredSize(new java.awt.Dimension(32, 32));
+        panelAreia.add(lblAreia);
+        lblAreia.setBounds(5, 40, 50, 16);
 
-		JLabel lbliconAreia = new JLabel("Areia");
-		lbliconAreia.setForeground(Color.DARK_GRAY);
-		lbliconAreia.setHorizontalAlignment(SwingConstants.CENTER);
-		lbliconAreia.setFont(new Font("Tahoma", Font.BOLD, 9));
-		lbliconAreia.setBounds(5, 35, 55, 15);
-		panelAreia.add(lbliconAreia);
+        txtMedidaAreia.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        panelAreia.add(txtMedidaAreia);
+        txtMedidaAreia.setBounds(110, 10, 110, 22);
 
-		txtAreiaML = new JTextField();
-		txtAreiaML.setHorizontalAlignment(SwingConstants.CENTER);
-		txtAreiaML.setEditable(false);
-		txtAreiaML.setColumns(10);
-		txtAreiaML.setBorder(null);
-		txtAreiaML.setBounds(112, 10, 86, 20);
-		panelAreia.add(txtAreiaML);
+        txtDosagemAreia.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        panelAreia.add(txtDosagemAreia);
+        txtDosagemAreia.setBounds(110, 30, 110, 22);
 
-		txtAreiaDosagem = new JTextField();
-		txtAreiaDosagem.setHorizontalAlignment(SwingConstants.CENTER);
-		txtAreiaDosagem.setEditable(false);
-		txtAreiaDosagem.setBounds(112, 29, 86, 20);
-		panelAreia.add(txtAreiaDosagem);
-		txtAreiaDosagem.setColumns(10);
-		txtAreiaDosagem.setBorder(null);
+        panelAgua.setBackground(new java.awt.Color(204, 204, 204));
+        panelAgua.setLayout(null);
 
-		JPanel panelBrita = new JPanel();
-		panelBrita.setLayout(null);
-		panelBrita.setBorder(new BordaCantoArredondado());
-		panelBrita.setBounds(40, 280, 210, 55);
-		frmFbricaDeConcreto.getContentPane().add(panelBrita);
+        lblIconAgua.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblIconAgua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/image/Água.png"))); // NOI18N
+        panelAgua.add(lblIconAgua);
+        lblIconAgua.setBounds(10, 10, 40, 32);
 
-		JLabel lblBritaIcon = new JLabel("");
-		lblBritaIcon.setIcon(new ImageIcon(VIEWconcreteFactory.class.getResource("/br/com/icon/icon brita.png")));
-		lblBritaIcon.setBounds(15, 4, 30, 35);
-		panelBrita.add(lblBritaIcon);
+        lblAgua.setFont(new java.awt.Font("Tahoma", 1, 9)); // NOI18N
+        lblAgua.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblAgua.setText("Água");
+        lblAgua.setToolTipText("");
+        lblAgua.setMaximumSize(new java.awt.Dimension(32, 32));
+        lblAgua.setMinimumSize(new java.awt.Dimension(32, 32));
+        lblAgua.setPreferredSize(new java.awt.Dimension(32, 32));
+        panelAgua.add(lblAgua);
+        lblAgua.setBounds(5, 40, 50, 16);
 
-		JLabel lbliconAreia_1 = new JLabel("Brita");
-		lbliconAreia_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lbliconAreia_1.setForeground(Color.DARK_GRAY);
-		lbliconAreia_1.setFont(new Font("Tahoma", Font.BOLD, 9));
-		lbliconAreia_1.setBounds(5, 36, 55, 15);
-		panelBrita.add(lbliconAreia_1);
+        txtMedidaAgua.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        panelAgua.add(txtMedidaAgua);
+        txtMedidaAgua.setBounds(110, 10, 110, 20);
 
-		txtBritaML = new JTextField();
-		txtBritaML.setHorizontalAlignment(SwingConstants.CENTER);
-		txtBritaML.setEditable(false);
-		txtBritaML.setColumns(10);
-		txtBritaML.setBorder(null);
-		txtBritaML.setBounds(112, 10, 86, 20);
-		panelBrita.add(txtBritaML);
+        txtDosagemAgua.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        panelAgua.add(txtDosagemAgua);
+        txtDosagemAgua.setBounds(110, 30, 110, 22);
 
-		txtBritaDosagem = new JTextField();
-		txtBritaDosagem.setHorizontalAlignment(SwingConstants.CENTER);
-		txtBritaDosagem.setEditable(false);
-		txtBritaDosagem.setColumns(10);
-		txtBritaDosagem.setBorder(null);
-		txtBritaDosagem.setBounds(112, 29, 86, 20);
-		panelBrita.add(txtBritaDosagem);
+        panelCola.setBackground(new java.awt.Color(204, 204, 204));
+        panelCola.setLayout(null);
 
-		JPanel panelBrita_1 = new JPanel();
-		panelBrita_1.setLayout(null);
-		panelBrita_1.setBorder(new BordaCantoArredondado());
-		panelBrita_1.setBounds(40, 403, 210, 55);
-		frmFbricaDeConcreto.getContentPane().add(panelBrita_1);
+        lblIconAgua1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblIconAgua1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/image/Glue.png"))); // NOI18N
+        panelCola.add(lblIconAgua1);
+        lblIconAgua1.setBounds(10, 10, 40, 32);
 
-		JLabel lblColaIcon = new JLabel("");
-		lblColaIcon.setIcon(new ImageIcon(VIEWconcreteFactory.class.getResource("/br/com/icon/icon glue.png")));
-		lblColaIcon.setBounds(15, 4, 30, 35);
-		panelBrita_1.add(lblColaIcon);
+        lblCola.setFont(new java.awt.Font("Tahoma", 1, 9)); // NOI18N
+        lblCola.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblCola.setText("Água");
+        lblCola.setToolTipText("");
+        lblCola.setMaximumSize(new java.awt.Dimension(32, 32));
+        lblCola.setMinimumSize(new java.awt.Dimension(32, 32));
+        lblCola.setPreferredSize(new java.awt.Dimension(32, 32));
+        panelCola.add(lblCola);
+        lblCola.setBounds(5, 40, 50, 16);
 
-		JLabel txtCola = new JLabel("Cola");
-		txtCola.setHorizontalAlignment(SwingConstants.CENTER);
-		txtCola.setForeground(Color.DARK_GRAY);
-		txtCola.setFont(new Font("Tahoma", Font.BOLD, 9));
-		txtCola.setBounds(5, 36, 55, 15);
-		panelBrita_1.add(txtCola);
+        txtMedidaCola.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        panelCola.add(txtMedidaCola);
+        txtMedidaCola.setBounds(110, 10, 110, 22);
 
-		txtColaML = new JTextField();
-		txtColaML.setHorizontalAlignment(SwingConstants.CENTER);
-		txtColaML.setEditable(false);
-		txtColaML.setColumns(10);
-		txtColaML.setBounds(112, 10, 86, 20);
-		panelBrita_1.add(txtColaML);
-		txtColaML.setBorder(null);
+        txtDosagemCola.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        panelCola.add(txtDosagemCola);
+        txtDosagemCola.setBounds(110, 30, 110, 22);
 
-		txtColaDosagem = new JTextField();
-		txtColaDosagem.setHorizontalAlignment(SwingConstants.CENTER);
-		txtColaDosagem.setEditable(false);
-		txtColaDosagem.setColumns(10);
-		txtColaDosagem.setBounds(112, 29, 86, 20);
-		panelBrita_1.add(txtColaDosagem);
-		txtColaDosagem.setBorder(null);
+        btnCalcular.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
+        btnCalcular.setText("CALCULAR");
+        btnCalcular.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCalcularActionPerformed(evt);
+            }
+        });
 
-		JPanel panelAgua = new JPanel();
-		panelAgua.setLayout(null);
-		panelAgua.setBorder(new BordaCantoArredondado());
-		panelAgua.setBounds(40, 341, 210, 55);
-		frmFbricaDeConcreto.getContentPane().add(panelAgua);
+        sliderDosagem.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        sliderDosagem.setMaximum(1);
+        sliderDosagem.setValue(0);
+        sliderDosagem.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                sliderDosagemStateChanged(evt);
+            }
+        });
 
-		JLabel lblAguaIcon = new JLabel("");
-		lblAguaIcon.setIcon(new ImageIcon(VIEWconcreteFactory.class.getResource("/br/com/icon/icon água.png")));
-		lblAguaIcon.setBounds(15, 3, 30, 35);
-		panelAgua.add(lblAguaIcon);
+        lblLitro.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lblLitro.setText("litro");
+        lblLitro.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblLitro.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblLitroMouseClicked(evt);
+            }
+        });
 
-		JLabel lbliconAreia_2 = new JLabel("Água");
-		lbliconAreia_2.setHorizontalAlignment(SwingConstants.CENTER);
-		lbliconAreia_2.setForeground(Color.DARK_GRAY);
-		lbliconAreia_2.setFont(new Font("Tahoma", Font.BOLD, 9));
-		lbliconAreia_2.setBounds(5, 35, 55, 15);
-		panelAgua.add(lbliconAreia_2);
+        lblMl.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lblMl.setText("ml");
+        lblMl.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblMl.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblMlMouseClicked(evt);
+            }
+        });
 
-		txtAguaML = new JTextField();
-		txtAguaML.setHorizontalAlignment(SwingConstants.CENTER);
-		txtAguaML.setEditable(false);
-		txtAguaML.setColumns(10);
-		txtAguaML.setBounds(112, 10, 86, 20);
-		panelAgua.add(txtAguaML);
-		txtAguaML.setBorder(null);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(29, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(panelHalterPeso, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(panelBrita, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(panelCimento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(panelAreia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(panelAgua, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(panelCola, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnCalcular, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(32, 32, 32))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(lblMl)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(sliderDosagem, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblLitro)
+                        .addGap(106, 106, 106))))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(panelHalterPeso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(sliderDosagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblLitro)
+                    .addComponent(lblMl))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(panelBrita, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(panelCimento, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(panelAreia, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(panelAgua, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(panelCola, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                .addComponent(btnCalcular)
+                .addGap(16, 16, 16))
+        );
 
-		txtAguaDosagem = new JTextField();
-		txtAguaDosagem.setHorizontalAlignment(SwingConstants.CENTER);
-		txtAguaDosagem.setEditable(false);
-		txtAguaDosagem.setColumns(10);
-		txtAguaDosagem.setBounds(112, 29, 86, 20);
-		panelAgua.add(txtAguaDosagem);
-		txtAguaDosagem.setBorder(null);
+        pack();
+        setLocationRelativeTo(null);
+    }// </editor-fold>//GEN-END:initComponents
 
-		RestrictedTextField validar = new RestrictedTextField(txtPesoHalter);
-		validar.setOnlyNums(true);
-		validar.setLimit(2);
+    private void btnCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalcularActionPerformed
+        if (txtPesoHalter.getText().equals("")) {
+            JOptionPane.showMessageDialog(this, "Insira o peso do halter", "Erro", JOptionPane.ERROR_MESSAGE);
+        } else if (cboDosagem.getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(this, "Escolha a dosagem", "Erro", JOptionPane.ERROR_MESSAGE);
+        } else {
+            entradaDados();
+            processamentoDados();
+            saidaDados();
+        }
+    }//GEN-LAST:event_btnCalcularActionPerformed
 
-		JButton btnConsultar = new JButton("Consultar");
-		btnConsultar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				try {
-					if (txtPesoHalter.getText().equals("")) {
-						JOptionPane.showMessageDialog(frmFbricaDeConcreto, "Informe o peso do halter");
-					} else if (cboDosagem.getSelectedIndex() == 0) {
-						JOptionPane.showMessageDialog(frmFbricaDeConcreto, "Informe a dosagem");
-					} else {
-						medida.setPesoHalter(Integer.parseInt(txtPesoHalter.getText()));
-						medida.calculaMedidas();
-						dose.calculaDosagem(medida);
+    private void sliderDosagemStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sliderDosagemStateChanged
 
-						mostraValores();
-					}
-				} catch (Exception e2) {
-					JOptionPane.showConfirmDialog(null, e2);
-				}
+    }//GEN-LAST:event_sliderDosagemStateChanged
 
-			}
+    private void lblMlMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMlMouseClicked
+        if (sliderDosagem.getValue() == 0) {
+            sliderDosagem.setValue(1);
+        } else {
+            sliderDosagem.setValue(0);
+        }
+    }//GEN-LAST:event_lblMlMouseClicked
 
-		});
+    private void lblLitroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLitroMouseClicked
+        if (sliderDosagem.getValue() == 1) {
+            sliderDosagem.setValue(0);
+        } else {
+            sliderDosagem.setValue(1);
+        }
+    }//GEN-LAST:event_lblLitroMouseClicked
 
-		btnConsultar.setBounds(161, 490, 89, 23);
-		frmFbricaDeConcreto.getContentPane().add(btnConsultar);
+    public static void main(String args[]) {
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(VIEWconcreteFactory.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
 
-	}
+        java.awt.EventQueue.invokeLater(() -> {
+            new VIEWconcreteFactory().setVisible(true);
+        });
+    }
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCalcular;
+    private javax.swing.JComboBox<String> cboDosagem;
+    private javax.swing.JCheckBox jCheckBox1;
+    private javax.swing.JLabel labelPesoHalter;
+    private javax.swing.JLabel lblAgua;
+    private javax.swing.JLabel lblAreia;
+    private javax.swing.JLabel lblBrita;
+    private javax.swing.JLabel lblCimento;
+    private javax.swing.JLabel lblCola;
+    private javax.swing.JLabel lblDosagem;
+    private javax.swing.JLabel lblIconAgua;
+    private javax.swing.JLabel lblIconAgua1;
+    private javax.swing.JLabel lblIconAreia;
+    private javax.swing.JLabel lblIconBrita;
+    private javax.swing.JLabel lblIconCimento;
+    private javax.swing.JLabel lblKg;
+    private javax.swing.JLabel lblLitro;
+    private javax.swing.JLabel lblMl;
+    private javax.swing.JPanel panelAgua;
+    private javax.swing.JPanel panelAreia;
+    private javax.swing.JPanel panelBrita;
+    private javax.swing.JPanel panelCimento;
+    private javax.swing.JPanel panelCola;
+    private javax.swing.JPanel panelHalterPeso;
+    private javax.swing.JSlider sliderDosagem;
+    private javax.swing.JTextField txtDosagemAgua;
+    private javax.swing.JTextField txtDosagemAreia;
+    private javax.swing.JTextField txtDosagemBrita;
+    private javax.swing.JTextField txtDosagemCimento;
+    private javax.swing.JTextField txtDosagemCola;
+    private javax.swing.JTextField txtMedidaAgua;
+    private javax.swing.JTextField txtMedidaAreia;
+    private javax.swing.JTextField txtMedidaBrita;
+    private javax.swing.JTextField txtMedidaCimento;
+    private javax.swing.JTextField txtMedidaCola;
+    private javax.swing.JTextField txtPesoHalter;
+    // End of variables declaration//GEN-END:variables
+
+    private void initFrame() {
+        this.setIconImage(Toolkit.getDefaultToolkit().getImage(VIEWconcreteFactory.class.getResource("/br/com/image/Halter.png")));
+    }
+
+    private void initPanel() {
+        roundPanelEdges(panelHalterPeso);
+        roundPanelEdges(panelBrita);
+        roundPanelEdges(panelCimento);
+        roundPanelEdges(panelAreia);
+        roundPanelEdges(panelAgua);
+        roundPanelEdges(panelCola);
+    }
+
+    private void roundPanelEdges(JPanel panel) {
+        panel.setBorder(new BordaCantoArredondado());
+    }
+
+    private void initTextFieldMedidas() {
+        adjustTxtPesoHalter(txtPesoHalter);
+
+        adjustTextField(txtMedidaBrita);
+        adjustTextField(txtMedidaCimento);
+        adjustTextField(txtMedidaAreia);
+        adjustTextField(txtMedidaAgua);
+        adjustTextField(txtMedidaCola);
+    }
+
+    private void adjustTextField(JTextField textField) {
+        textField.setEditable(false);
+        textField.setBackground(null);
+        textField.setBorder(null);
+    }
+
+    private void adjustTxtPesoHalter(JTextField txtPeso) {
+        RestrictedTextField valida = new RestrictedTextField(txtPesoHalter);
+        valida.setLimit(2);
+        valida.setOnlyNums(true);
+        txtPeso.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, Color.GRAY));
+        txtPeso.setBackground(null);
+    }
+
+    private void initTextFieldDosagens() {
+        adjustTextField(txtDosagemBrita);
+        adjustTextField(txtDosagemCimento);
+        adjustTextField(txtDosagemAreia);
+        adjustTextField(txtDosagemAgua);
+        adjustTextField(txtDosagemCola);
+    }
+
+    private void saidaDados() {
+        String medidas = "ml";
+        String doses = " doses";
+
+        if (sliderDosagem.getValue() == 1) {
+            medidas = " litros";
+        }
+
+        txtMedidaBrita.setText(String.format("%.0f", medida.getBrita()).concat(sufixoMedidas(medida.getBrita())));
+        txtMedidaCimento.setText(String.format("%.0f", medida.getCimento()).concat(sufixoMedidas(medida.getCimento())));
+        txtMedidaAreia.setText(String.format("%.0f", medida.getAreia()).concat(sufixoMedidas(medida.getAreia())));
+        txtMedidaAgua.setText(String.format("%.1f", medida.getAgua()).concat(sufixoMedidas(medida.getAgua())));
+        txtMedidaCola.setText(String.format("%.2f", medida.getCola()).concat(sufixoMedidas(medida.getCola())));
+
+        txtDosagemBrita.setText(String.format("%.0f", dose.getBrita()).concat(sufixoDoses(dose.getBrita())));
+        txtDosagemCimento.setText(String.format("%.0f", dose.getCimento()).concat(sufixoDoses(dose.getCimento())));
+        txtDosagemAreia.setText(String.format("%.0f", dose.getAreia()).concat(sufixoDoses(dose.getAreia())));
+        txtDosagemAgua.setText(String.format("%.1f", dose.getAgua()).concat(sufixoDoses(dose.getAgua())));
+        txtDosagemCola.setText(String.format("%.2f", dose.getCola()).concat(sufixoDoses(dose.getCola())));
+    }
+
+    private void entradaDados() {
+        medida.setPesoHalter(Float.parseFloat(txtPesoHalter.getText()));
+        dose.setDoseRecipiente(Float.parseFloat(cboDosagem.getSelectedItem().toString().replace("ml", "")));
+    }
+
+    private void processamentoDados() {
+        medida.calculaMedidas();
+        dose.calculaDosagem(medida);
+        if (sliderDosagem.getValue() == 1) {
+            medida.calculaEmLitro();
+        }
+    }
+
+    private String sufixoMedidas(float medida) {
+        if (sliderDosagem.getValue() == 0) {
+            return " ml";
+        } else {
+            if (medida <= 2) {
+                return " litro";
+            } else {
+                return " litros";
+            }
+        }
+    }
+
+    private String sufixoDoses(float dose) {
+        if (dose <= 2) {
+            return " dose";
+        } else{
+            return " doses";
+        }
+    }
 }
