@@ -1,6 +1,7 @@
 package br.com.controller;
 
-import javax.swing.JSpinner;
+import br.com.model.Dosagem;
+import static br.com.view.VIEWconcreteFactory.sliderDosagem;
 
 /**
  *
@@ -8,8 +9,30 @@ import javax.swing.JSpinner;
  */
 public class Controller {
 
-    public boolean validaSpinners(JSpinner spinnerHoras, JSpinner spinnerMinutos, JSpinner spinnerSegundos) {
-        return spinnerHoras.getValue().equals(0) && spinnerMinutos.getValue().equals(0) && spinnerSegundos.getValue().equals(0);
+    int contador = 0;
+
+    public String sufixoMedidas(float medida) {
+        if (sliderDosagem.getValue() == 0) {
+            return " ml";
+        } else {
+            if (medida <= 2) {
+                return " litro";
+            } else {
+                return " litros";
+            }
+        }
     }
 
+    public String sufixoDoses(float dose) {
+        if (dose <= 2) {
+            return " dose";
+        } else {
+            return " doses";
+        }
+    }
+
+    public boolean recomendaDosagem(Dosagem dose) {
+        contador++;
+        return dose.getBrita() >= 20 && contador % 3 == 0;
+    }
 }

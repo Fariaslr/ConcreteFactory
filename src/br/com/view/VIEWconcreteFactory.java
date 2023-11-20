@@ -2,14 +2,10 @@ package br.com.view;
 
 import Atxy2k.CustomTextField.RestrictedTextField;
 import br.com.aplication.BordaCantoArredondado;
-import br.com.model.Dosagem;
-import br.com.model.Medida;
-import java.awt.Color;
-import java.awt.Toolkit;
-import javax.swing.BorderFactory;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
+import br.com.controller.Controller;
+import br.com.model.*;
+import java.awt.*;
+import javax.swing.*;
 
 /**
  *
@@ -17,15 +13,24 @@ import javax.swing.JTextField;
  */
 public class VIEWconcreteFactory extends javax.swing.JFrame {
 
-    Medida medida = new Medida();
-    Dosagem dose = new Dosagem();
+    Medida medida;
+    Dosagem dose;
+    Controller controller;
+    Font fontJOptionPane;
+    Icon iconInfo;
+    Icon iconAlert;
 
     public VIEWconcreteFactory() {
         initComponents();
-        initFrame();
         initPanel();
+        initIcons();
         initTextFieldMedidas();
         initTextFieldDosagens();
+
+        fontJOptionPane = new Font("Tahoma", Font.PLAIN, 12);
+        medida = new Medida();
+        dose = new Dosagem();
+        controller = new Controller();
     }
 
     @SuppressWarnings("unchecked")
@@ -77,41 +82,42 @@ public class VIEWconcreteFactory extends javax.swing.JFrame {
 
         panelHalterPeso.setBackground(new java.awt.Color(192, 192, 192));
 
-        labelPesoHalter.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        labelPesoHalter.setForeground(new java.awt.Color(255, 255, 255));
+        labelPesoHalter.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         labelPesoHalter.setText("Halter");
 
+        txtPesoHalter.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         txtPesoHalter.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
-        lblKg.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        lblKg.setForeground(new java.awt.Color(255, 255, 255));
+        lblKg.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblKg.setText("Kg");
 
-        lblDosagem.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        lblDosagem.setForeground(new java.awt.Color(255, 255, 255));
+        lblDosagem.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblDosagem.setText("Dosagem");
 
+        cboDosagem.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         cboDosagem.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "100 ml", "200 ml", "300 ml", "500 ml", "750 ml", "1000 ml", "1500 ml" }));
+        cboDosagem.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         javax.swing.GroupLayout panelHalterPesoLayout = new javax.swing.GroupLayout(panelHalterPeso);
         panelHalterPeso.setLayout(panelHalterPesoLayout);
         panelHalterPesoLayout.setHorizontalGroup(
             panelHalterPesoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelHalterPesoLayout.createSequentialGroup()
-                .addGap(43, 43, 43)
-                .addGroup(panelHalterPesoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblDosagem)
-                    .addComponent(labelPesoHalter))
+                .addGroup(panelHalterPesoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelHalterPesoLayout.createSequentialGroup()
+                        .addGap(65, 65, 65)
+                        .addComponent(labelPesoHalter))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelHalterPesoLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(lblDosagem)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelHalterPesoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelHalterPesoLayout.createSequentialGroup()
                         .addComponent(txtPesoHalter, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblKg))
-                    .addGroup(panelHalterPesoLayout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(cboDosagem, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(30, Short.MAX_VALUE))
+                    .addComponent(cboDosagem, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
         panelHalterPesoLayout.setVerticalGroup(
             panelHalterPesoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -146,14 +152,15 @@ public class VIEWconcreteFactory extends javax.swing.JFrame {
         panelBrita.add(lblBrita);
         lblBrita.setBounds(10, 40, 40, 16);
 
-        txtMedidaBrita.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtMedidaBrita.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         txtMedidaBrita.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         panelBrita.add(txtMedidaBrita);
         txtMedidaBrita.setBounds(110, 10, 110, 21);
 
+        txtDosagemBrita.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         txtDosagemBrita.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         panelBrita.add(txtDosagemBrita);
-        txtDosagemBrita.setBounds(110, 30, 110, 22);
+        txtDosagemBrita.setBounds(110, 30, 110, 21);
 
         panelCimento.setBackground(new java.awt.Color(204, 204, 204));
         panelCimento.setLayout(null);
@@ -173,13 +180,15 @@ public class VIEWconcreteFactory extends javax.swing.JFrame {
         panelCimento.add(lblCimento);
         lblCimento.setBounds(5, 40, 50, 16);
 
+        txtMedidaCimento.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         txtMedidaCimento.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         panelCimento.add(txtMedidaCimento);
-        txtMedidaCimento.setBounds(110, 10, 110, 22);
+        txtMedidaCimento.setBounds(110, 10, 110, 21);
 
+        txtDosagemCimento.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         txtDosagemCimento.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         panelCimento.add(txtDosagemCimento);
-        txtDosagemCimento.setBounds(110, 30, 110, 22);
+        txtDosagemCimento.setBounds(110, 30, 110, 21);
 
         panelAreia.setBackground(new java.awt.Color(204, 204, 204));
         panelAreia.setLayout(null);
@@ -199,13 +208,15 @@ public class VIEWconcreteFactory extends javax.swing.JFrame {
         panelAreia.add(lblAreia);
         lblAreia.setBounds(5, 40, 50, 16);
 
+        txtMedidaAreia.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         txtMedidaAreia.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         panelAreia.add(txtMedidaAreia);
-        txtMedidaAreia.setBounds(110, 10, 110, 22);
+        txtMedidaAreia.setBounds(110, 10, 110, 21);
 
+        txtDosagemAreia.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         txtDosagemAreia.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         panelAreia.add(txtDosagemAreia);
-        txtDosagemAreia.setBounds(110, 30, 110, 22);
+        txtDosagemAreia.setBounds(110, 30, 110, 21);
 
         panelAgua.setBackground(new java.awt.Color(204, 204, 204));
         panelAgua.setLayout(null);
@@ -225,13 +236,15 @@ public class VIEWconcreteFactory extends javax.swing.JFrame {
         panelAgua.add(lblAgua);
         lblAgua.setBounds(5, 40, 50, 16);
 
+        txtMedidaAgua.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         txtMedidaAgua.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         panelAgua.add(txtMedidaAgua);
         txtMedidaAgua.setBounds(110, 10, 110, 20);
 
+        txtDosagemAgua.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         txtDosagemAgua.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         panelAgua.add(txtDosagemAgua);
-        txtDosagemAgua.setBounds(110, 30, 110, 22);
+        txtDosagemAgua.setBounds(110, 30, 110, 21);
 
         panelCola.setBackground(new java.awt.Color(204, 204, 204));
         panelCola.setLayout(null);
@@ -251,13 +264,15 @@ public class VIEWconcreteFactory extends javax.swing.JFrame {
         panelCola.add(lblCola);
         lblCola.setBounds(5, 40, 50, 16);
 
+        txtMedidaCola.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         txtMedidaCola.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         panelCola.add(txtMedidaCola);
-        txtMedidaCola.setBounds(110, 10, 110, 22);
+        txtMedidaCola.setBounds(110, 10, 110, 21);
 
+        txtDosagemCola.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         txtDosagemCola.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         panelCola.add(txtDosagemCola);
-        txtDosagemCola.setBounds(110, 30, 110, 22);
+        txtDosagemCola.setBounds(110, 30, 110, 21);
 
         btnCalcular.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
         btnCalcular.setText("CALCULAR");
@@ -299,7 +314,7 @@ public class VIEWconcreteFactory extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(29, Short.MAX_VALUE)
+                .addContainerGap(30, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -339,7 +354,7 @@ public class VIEWconcreteFactory extends javax.swing.JFrame {
                 .addComponent(panelAgua, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panelCola, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
                 .addComponent(btnCalcular)
                 .addGap(16, 16, 16))
         );
@@ -350,9 +365,9 @@ public class VIEWconcreteFactory extends javax.swing.JFrame {
 
     private void btnCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalcularActionPerformed
         if (txtPesoHalter.getText().equals("")) {
-            JOptionPane.showMessageDialog(this, "Insira o peso do halter", "Erro", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Insira o peso do halter", "Campo de texto vazio", JOptionPane.PLAIN_MESSAGE, iconAlert);
         } else if (cboDosagem.getSelectedIndex() == 0) {
-            JOptionPane.showMessageDialog(this, "Escolha a dosagem", "Erro", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Escolha uma dosagem", "Dosagem vazia", JOptionPane.PLAIN_MESSAGE, iconAlert);
         } else {
             entradaDados();
             processamentoDados();
@@ -399,7 +414,7 @@ public class VIEWconcreteFactory extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCalcular;
-    private javax.swing.JComboBox<String> cboDosagem;
+    public static javax.swing.JComboBox<String> cboDosagem;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel labelPesoHalter;
     private javax.swing.JLabel lblAgua;
@@ -422,7 +437,7 @@ public class VIEWconcreteFactory extends javax.swing.JFrame {
     private javax.swing.JPanel panelCimento;
     private javax.swing.JPanel panelCola;
     private javax.swing.JPanel panelHalterPeso;
-    private javax.swing.JSlider sliderDosagem;
+    public static javax.swing.JSlider sliderDosagem;
     private javax.swing.JTextField txtDosagemAgua;
     private javax.swing.JTextField txtDosagemAreia;
     private javax.swing.JTextField txtDosagemBrita;
@@ -436,8 +451,10 @@ public class VIEWconcreteFactory extends javax.swing.JFrame {
     private javax.swing.JTextField txtPesoHalter;
     // End of variables declaration//GEN-END:variables
 
-    private void initFrame() {
+    private void initIcons() {
         this.setIconImage(Toolkit.getDefaultToolkit().getImage(VIEWconcreteFactory.class.getResource("/br/com/image/Halter.png")));
+        iconInfo = new ImageIcon(Toolkit.getDefaultToolkit().createImage(getClass().getResource("/br/com/image/Info.png")));
+        iconAlert = new ImageIcon(Toolkit.getDefaultToolkit().createImage(getClass().getResource("/br/com/image/Alert.png")));
     }
 
     private void initPanel() {
@@ -485,27 +502,6 @@ public class VIEWconcreteFactory extends javax.swing.JFrame {
         adjustTextField(txtDosagemCola);
     }
 
-    private void saidaDados() {
-        String medidas = "ml";
-        String doses = " doses";
-
-        if (sliderDosagem.getValue() == 1) {
-            medidas = " litros";
-        }
-
-        txtMedidaBrita.setText(String.format("%.0f", medida.getBrita()).concat(sufixoMedidas(medida.getBrita())));
-        txtMedidaCimento.setText(String.format("%.0f", medida.getCimento()).concat(sufixoMedidas(medida.getCimento())));
-        txtMedidaAreia.setText(String.format("%.0f", medida.getAreia()).concat(sufixoMedidas(medida.getAreia())));
-        txtMedidaAgua.setText(String.format("%.1f", medida.getAgua()).concat(sufixoMedidas(medida.getAgua())));
-        txtMedidaCola.setText(String.format("%.2f", medida.getCola()).concat(sufixoMedidas(medida.getCola())));
-
-        txtDosagemBrita.setText(String.format("%.0f", dose.getBrita()).concat(sufixoDoses(dose.getBrita())));
-        txtDosagemCimento.setText(String.format("%.0f", dose.getCimento()).concat(sufixoDoses(dose.getCimento())));
-        txtDosagemAreia.setText(String.format("%.0f", dose.getAreia()).concat(sufixoDoses(dose.getAreia())));
-        txtDosagemAgua.setText(String.format("%.1f", dose.getAgua()).concat(sufixoDoses(dose.getAgua())));
-        txtDosagemCola.setText(String.format("%.2f", dose.getCola()).concat(sufixoDoses(dose.getCola())));
-    }
-
     private void entradaDados() {
         medida.setPesoHalter(Float.parseFloat(txtPesoHalter.getText()));
         dose.setDoseRecipiente(Float.parseFloat(cboDosagem.getSelectedItem().toString().replace("ml", "")));
@@ -517,25 +513,23 @@ public class VIEWconcreteFactory extends javax.swing.JFrame {
         if (sliderDosagem.getValue() == 1) {
             medida.calculaEmLitro();
         }
-    }
-
-    private String sufixoMedidas(float medida) {
-        if (sliderDosagem.getValue() == 0) {
-            return " ml";
-        } else {
-            if (medida <= 2) {
-                return " litro";
-            } else {
-                return " litros";
-            }
+        if (controller.recomendaDosagem(dose)) {
+            JOptionPane.showMessageDialog(this, "Aumente a dosagem", "Recomendação", JOptionPane.PLAIN_MESSAGE, iconInfo);
         }
     }
 
-    private String sufixoDoses(float dose) {
-        if (dose <= 2) {
-            return " dose";
-        } else{
-            return " doses";
-        }
+    private void saidaDados() {
+        txtMedidaBrita.setText(String.format("%.0f", medida.getBrita()).concat(controller.sufixoMedidas(medida.getBrita())));
+        txtMedidaCimento.setText(String.format("%.0f", medida.getCimento()).concat(controller.sufixoMedidas(medida.getCimento())));
+        txtMedidaAreia.setText(String.format("%.0f", medida.getAreia()).concat(controller.sufixoMedidas(medida.getAreia())));
+        txtMedidaAgua.setText(String.format("%.1f", medida.getAgua()).concat(controller.sufixoMedidas(medida.getAgua())));
+        txtMedidaCola.setText(String.format("%.2f", medida.getCola()).concat(controller.sufixoMedidas(medida.getCola())));
+
+        txtDosagemBrita.setText(String.format("%.0f", dose.getBrita()).concat(controller.sufixoDoses(dose.getBrita())));
+        txtDosagemCimento.setText(String.format("%.0f", dose.getCimento()).concat(controller.sufixoDoses(dose.getCimento())));
+        txtDosagemAreia.setText(String.format("%.0f", dose.getAreia()).concat(controller.sufixoDoses(dose.getAreia())));
+        txtDosagemAgua.setText(String.format("%.1f", dose.getAgua()).concat(controller.sufixoDoses(dose.getAgua())));
+        txtDosagemCola.setText(String.format("%.2f", dose.getCola()).concat(controller.sufixoDoses(dose.getCola())));
+
     }
 }
