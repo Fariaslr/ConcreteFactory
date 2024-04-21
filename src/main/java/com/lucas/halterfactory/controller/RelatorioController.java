@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.lucas.halterfactory.model.Relatorio;
+import com.lucas.halterfactory.model.RelatorioModel;
 import com.lucas.halterfactory.repository.RelatorioRepository;
 
 @RestController
@@ -17,7 +17,7 @@ public class RelatorioController {
 	RelatorioRepository relatorioRepository;
 	
 	@GetMapping
-	public List<Relatorio> getAll(){
+	public List<RelatorioModel> getAll(){
 		return relatorioRepository.findAll();
 	}
 }
