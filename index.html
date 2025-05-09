@@ -2,17 +2,25 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Calculadora de Halter de Concreto</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="container">
-    <h1>Calculadora de Halter de Concreto</h1>
-    <label for="peso">Peso do halter (kg):</label>
-    <input type="number" id="peso" min="1" placeholder="Ex: 10">
-    <button onclick="calcular()">Calcular</button>
+    <h1>Calculadora de Halter</h1>
+    <label for="peso">Peso desejado (em kg):</label>
+    <input type="number" id="peso" placeholder="Ex: 5" min="0" step="0.1">
 
-    <div id="resultado" class="resultado"></div>
+    <div class="unidades">
+      <p>Unidade de saída:</p>
+      <label><input type="radio" name="unidade" value="L" checked> Litros (L)</label>
+      <label><input type="radio" name="unidade" value="ml"> Mililitros (ml)</label>
+      <label><input type="radio" name="unidade" value="kg"> Quilogramas (kg)</label>
+    </div>
+
+    <button onclick="calcular()">Calcular</button>
+    <div id="resultado"></div>
   </div>
 
   <script src="script.js"></script>
